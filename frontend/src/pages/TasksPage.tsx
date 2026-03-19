@@ -24,10 +24,8 @@ export function TasksPage() {
         setIsLoading(false)
       }
     }
-
     void loadTasks()
   }, [])
-
   return (
     <main className="page">
       <section className="card">

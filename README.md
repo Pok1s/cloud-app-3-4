@@ -1,39 +1,43 @@
-# Artefakt 03 - Cloud App Development
+# Cloud App - Artefakt 03 i 04
 
-To repozytorium zawiera implementacje zadania 03:
-- aplikacja React + Vite w `frontend/`
-- co najmniej jeden widok (Page) wyswietlajacy liste danych
-- komunikacja z API przez Axios i metode GET
-- `VITE_API_URL` pobierany ze zmiennych srodowiskowych (bez hardcoded URL)
-- frontend uruchamiany w Dockerze pod adresem `http://localhost:8080`
+Repozytorium zawiera dwa elementy projektu:
+- `frontend/` - React + Vite (Artefakt 03)
+- `backend/` - REST API CRUD + baza danych Postgres (Artefakt 04)
 
-## Szybki start
+## Artefakt 03 (frontend)
+
+- React + Vite uruchomiony w `frontend/`
+- widok listy danych (`src/pages/TasksPage.tsx`)
+- komunikacja Axios GET przez `VITE_API_URL`
+- Dockerfile i uruchomienie frontu pod `http://localhost:8080`
+
+## Artefakt 04 (backend)
+
+- REST API z 5 endpointami CRUD dla encji `Task`
+- walidacja danych i obsluga bledow HTTP
+- polaczenie z baza Postgres w osobnym kontenerze
+- backend dostepny pod `http://localhost:8081`
+- architektura warstwowa:
+  - `Controllers/`
+  - `Services/`
+  - `Repositories/`
+  - `Models/`
+  - `DTOs/`
+
+## Uruchomienie backendu i bazy (Docker)
 
 ```bash
-cd frontend
-npm install
-npm run dev
+docker compose up -d --build
 ```
 
-## Docker
+Test API:
 
 ```bash
-cd frontend
-docker build -t artefakt03-frontend .
-docker run --name artefakt03-frontend-container -p 8080:80 -d artefakt03-frontend
+curl http://localhost:8081/tasks
 ```
 
-Po weryfikacji:
+Zatrzymanie:
 
 ```bash
-docker stop artefakt03-frontend-container
-docker rm artefakt03-frontend-container
+docker compose down
 ```
-
-## Mapowanie na checkliste
-
-- **3.1** React + Vite zainicjalizowany w `frontend/`
-- **3.2** Widok z lista danych: `src/pages/TasksPage.tsx`
-- **3.3** Axios GET i URL ze zmiennych: `src/services/api.ts`, `src/services/tasksService.ts`, `.env`
-- **3.5** Dockerfile i uruchomienie aplikacji na `localhost:8080`: `frontend/Dockerfile`
-- **Aktualizacja GitHub** dodaj i wypchnij projekt, a nastepnie dolacz screen komendy `git push` oraz README z URL GitHub
