@@ -1,0 +1,7 @@
+{
+  "tasks": [
+    { "id": 1, "title": "Przygotowac frontend React + Vite", "completed": true },
+    { "id": 2, "title": "Dodac komunikacje Axios GET", "completed": true },
+    { "id": 3, "title": "Uruchomic aplikacje w Dockerze", "completed": false }
+  ]
+}
